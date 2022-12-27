@@ -1,0 +1,30 @@
+{
+   "pluginmetadataversion": 2,
+   "name": "binja-win-docs",
+   "author": "matteyeux",
+   "type": [
+      "ui",
+      "helper"
+   ],
+   "api": [
+      "python3"
+   ],
+   "description": "Binary Ninja plugin to display the documentation of a Windows function in a sidebar widget.",
+   "longdescription": "\n\n![Screenshot from 2023-01-01 12-40-15](https://user-images.githubusercontent.com/8758978/210169502-ceafcb37-53b0-403b-88e7-d018e3932acd.png)\n\n## Description\n\nThis plugin adds a sidebar widget to Binary Ninja. If the cursor is set to a `call` instruction the plugin detects the function's name a requests MSDN documentation.\n\nThe requested documentation is then displayed in the sidebar widget.\n\nEach documented function is also saved to a cache file named `cache.json` in the current plugin directory, meaning the plugin doesn't requests the doc for the same function everytime.\n\n## Credits\n\n- [Eric Hennenfent](https://github.com/ehennenfent) for [binja_explain_instruction](https://github.com/ehennenfent/binja_explain_instruction) which I used as templated for this plugin.\n- [Hacking Things](https://github.com/HackingThings) for the [URL I needed to make this work](https://github.com/HackingThings/binja_MSDN_Helper/blob/main/__init__.py#L17)",
+   "license": {
+      "name": "Apache-2.0",
+      "text": "Copyright 2023 matteyeux\n\nLicensed under the Apache License, Version 2.0 (the \"License\"); you may not use this file except in compliance with the License. You may obtain a copy of the License at\n\n\thttp://www.apache.org/licenses/LICENSE-2.0\n\nUnless required by applicable law or agreed to in writing, software distributed under the License is distributed on an \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License."
+   },
+   "platforms": [
+      "Darwin",
+      "Windows",
+      "Linux"
+   ],
+   "installinstructions": {
+      "Darwin": "Clone this repository into `~/Library/Application Support/Binary Ninja/plugins/`",
+      "Windows": "Clone this repository into `%APPDATA%/Binary Ninja/plugins/`",
+      "Linux": "Clone this repository into `~/.binaryninja/plugins/`"
+   },
+   "version": "0.1.0",
+   "minimumbinaryninjaversion": 3053
+}
