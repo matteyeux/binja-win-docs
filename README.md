@@ -12,6 +12,10 @@ The requested documentation is then displayed in the sidebar widget.
 
 Each documented function is also saved to a cache file named `cache.json` in the current plugin directory, meaning the plugin doesn't requests the doc for the same function everytime.
 
+### Demo
+
+![Desktop 02-01-2023 08-05-21](https://user-images.githubusercontent.com/8758978/210202853-841b973f-8add-4e35-bcf0-dde51ac5aa87.gif)
+
 ### Installation Instructions
 
 #### Darwin
