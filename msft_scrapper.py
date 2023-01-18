@@ -36,7 +36,8 @@ class MSFTLearnScrapper:
         if check and self.get_syntax() is None:
             return ""
         else:
-            return self.soup.find("h3").findNext().text
+            description = self.soup.find("meta", property="og:description")
+            return description["content"] if description else ""
 
     def get_syntax(self) -> Optional[str]:
         h2s = self.soup.find_all("h2")
@@ -52,7 +53,7 @@ class MSFTLearnScrapper:
 
 
 if __name__ == '__main__':
-    function_name = "CreateFileA"
+    function_name = "SetErrorMode"
     function = MSFTLearnScrapper(function_name)
     print("==== description ====")
     print(function.get_description())
