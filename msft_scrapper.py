@@ -24,13 +24,13 @@ class MSFTLearnScrapper:
         # https://stackoverflow.com/a/73757003
         # it grabs content of <p> in h2 titles and put it in a dict
         self.h2_titles = {}
-        for p in self.soup.select('p'):
-            if p.find_previous('h2'):
-                if self.h2_titles.get(p.find_previous('h2').text) is None:
-                    self.h2_titles[p.find_previous('h2').text] = []
+        for p in self.soup.select("p"):
+            if p.find_previous("h2"):
+                if self.h2_titles.get(p.find_previous("h2").text) is None:
+                    self.h2_titles[p.find_previous("h2").text] = []
             else:
                 continue
-            self.h2_titles[p.find_previous('h2').text].append(p.text)
+            self.h2_titles[p.find_previous("h2").text].append(p.text)
 
     def get_description(self, check: bool = False) -> str:
         if check and self.get_syntax() is None:
@@ -46,13 +46,13 @@ class MSFTLearnScrapper:
                 return h2.findNext().text
 
     def get_parameters(self) -> Optional[list]:
-        return self.h2_titles.get('Parameters', None)
+        return self.h2_titles.get("Parameters", None)
 
     def get_return_value(self) -> Optional[list]:
-        return self.h2_titles.get('Return value', None)
+        return self.h2_titles.get("Return value", None)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     function_name = "SetErrorMode"
     function = MSFTLearnScrapper(function_name)
     print("==== description ====")

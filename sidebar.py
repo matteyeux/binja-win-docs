@@ -28,7 +28,9 @@ def make_hline():
 
 
 class ScrapperThread(BackgroundTaskThread):
-    def __init__(self, function, syntax_callback, description_callback, retval_callback):
+    def __init__(
+        self, function, syntax_callback, description_callback, retval_callback
+    ):
         super().__init__(
             f"Getting data for {function} ...",
             can_cancel=True,
@@ -55,9 +57,9 @@ class ScrapperThread(BackgroundTaskThread):
 
         # if function is found in cache set the values
         if self.function in self.cache:
-            self.syntax = self.cache[self.function].get('syntax', '')
-            self.description = self.cache[self.function].get('description', None)
-            self.return_value = self.cache[self.function].get('return_value', None)
+            self.syntax = self.cache[self.function].get("syntax", "")
+            self.description = self.cache[self.function].get("description", None)
+            self.return_value = self.cache[self.function].get("return_value", None)
         else:
             # setup the scrapper and grab data
             scrapper = MSFTLearnScrapper(self.function)
@@ -84,7 +86,11 @@ class ScrapperThread(BackgroundTaskThread):
             json_file.write(json_object)
 
     def write_cache(self):
-        cache = {'syntax': self.syntax, 'description': self.description, 'return_value': self.return_value}
+        cache = {
+            "syntax": self.syntax,
+            "description": self.description,
+            "return_value": self.return_value,
+        }
         self.cache[self.function] = cache
         json_object = json.dumps(self.cache)
         with open(self.cache_file, "w") as json_file:
